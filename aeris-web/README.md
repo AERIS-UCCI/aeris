@@ -71,3 +71,33 @@ export default defineConfig([
   },
 ])
 ```
+# AERIS
+
+Este proyecto esta creado con **React + Typescript SWC**, **Vite**, **Tailwind CSS** y **React Router DOM**.
+
+---
+
+## 📦 Instalación
+
+Clona el repositorio e instala las dependencias:
+
+```bash
+npm install
+npm install react-router-dom
+npm install tailwindcss @tailwindcss/vite
+npm install @heroicons/react
+npm install lucide-react
+npm install leaflet.heat
+npm install leaflet leaflet.heat react-leaflet
+npm install polyline
+
+npm run dev
+
+
+# Backend 
+
+python -m venv venv
+.\venv\Scripts\activate
+pip install fastapi uvicorn requests
+
+uvicorn main:app --reload --port 8000
