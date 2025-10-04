@@ -1,156 +1,223 @@
-import React, { useState } from 'react';
-import { Twitter, Facebook, Mail, Lock } from 'lucide-react';
-import { Link } from 'react-router-dom';
+"use client";
 
-export default function AerisLogin() {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: ''
-  });
-  const [rememberMe, setRememberMe] = useState(false);
+import { Link } from "react-router-dom";
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setFormData({
-        ...formData,
-        [e.target.name]: e.target.value
-      });
-    };
-
-  const handleSubmit = () => {
-    console.log('Login submitted:', formData);
-  };
-
+export default function Example() {
   return (
     <>
-        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-teal-900 flex items-center justify-center px-6 py-12">
-        <div className="w-full max-w-md">
-            {/* Logo */}
-            <div className="flex justify-center mb-8">
-            <div className="w-20 h-20 bg-gradient-to-br from-teal-500 to-cyan-400 rounded-full flex items-center justify-center shadow-lg shadow-teal-500/50">
-                <div className="w-8 h-8 border-4 border-white transform rotate-45"></div>
-            </div>
+      {/*
+        This example requires updating your template:
+
+        ```
+        <html class="h-full bg-white">
+        <body class="h-full">
+        ```
+      */}
+      <div className="flex min-h-full">
+        <div className="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+          <div className="mx-auto w-full max-w-sm lg:w-96">
+            <div>
+              <img
+                alt="Your Company"
+                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
+                className="h-10 w-auto"
+              />
+
+              <h2 className="mt-8 text-2xl/9 font-bold tracking-tight text-gray-900">
+                Sign in to your account
+              </h2>
+
+              <p className="mt-2 text-sm/6 text-gray-500">
+                Not a member?{" "}
+                <Link to="/Registro">
+                  <a
+                    href="#"
+                    className="font-semibold text-indigo-600 hover:text-indigo-500"
+                  >
+                    Start a 14 day free trial
+                  </a>
+                </Link>
+              </p>
             </div>
 
-            {/* Título */}
-            <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-white mb-2">
-                Bienvenido
-            </h1>
-            <p className="text-gray-400">
-                Inicia sesión para continuar con AERIS
-            </p>
-            </div>
+            <div className="mt-10">
+              <div>
+                <form action="#" method="POST" className="space-y-6">
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-sm/6 font-medium text-gray-900"
+                    >
+                      Email address
+                    </label>
+                    <div className="mt-2">
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        required
+                        autoComplete="email"
+                        className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                      />
+                    </div>
+                  </div>
 
-            {/* Inicio Rapido */}
-            <p className="text-gray-400 text-center text-sm mb-4">
-            Inicia sesión rápidamente con:
-            </p>
-            <div className="grid grid-cols-3 gap-3 mb-8">
-            <button className="flex items-center justify-center h-12 border-2 border-teal-700 rounded-full hover:border-teal-500 hover:bg-teal-900/20 transition-all">
-                <Twitter className="w-5 h-5 text-white" />
-            </button>
-            <button className="flex items-center justify-center h-12 border-2 border-teal-700 rounded-full hover:border-teal-500 hover:bg-teal-900/20 transition-all">
-                <Facebook className="w-5 h-5 text-white" />
-            </button>
-            <button className="flex items-center justify-center h-12 border-2 border-teal-700 rounded-full hover:border-teal-500 hover:bg-teal-900/20 transition-all">
-                <svg className="w-5 h-5" viewBox="0 0 24 24">
-                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                </svg>
-            </button>
-            </div>
+                  <div>
+                    <label
+                      htmlFor="password"
+                      className="block text-sm/6 font-medium text-gray-900"
+                    >
+                      Password
+                    </label>
+                    <div className="mt-2">
+                      <input
+                        id="password"
+                        name="password"
+                        type="password"
+                        required
+                        autoComplete="current-password"
+                        className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                      />
+                    </div>
+                  </div>
 
-            {/* Division */}
-            <div className="relative mb-8">
-            <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-slate-700"></div>
-            </div>
-            <div className="relative flex justify-center text-sm">
-                <span className="px-4 bg-slate-900 text-gray-500">O usa tu email</span>
-            </div>
-            </div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex gap-3">
+                      <div className="flex h-6 shrink-0 items-center">
+                        <div className="group grid size-4 grid-cols-1">
+                          <input
+                            id="remember-me"
+                            name="remember-me"
+                            type="checkbox"
+                            className="col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"
+                          />
+                          <svg
+                            fill="none"
+                            viewBox="0 0 14 14"
+                            className="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-disabled:stroke-gray-950/25"
+                          >
+                            <path
+                              d="M3 8L6 11L11 3.5"
+                              strokeWidth={2}
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              className="opacity-0 group-has-checked:opacity-100"
+                            />
+                            <path
+                              d="M3 7H11"
+                              strokeWidth={2}
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              className="opacity-0 group-has-indeterminate:opacity-100"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                      <label
+                        htmlFor="remember-me"
+                        className="block text-sm/6 text-gray-900"
+                      >
+                        Remember me
+                      </label>
+                    </div>
 
-            {/* Formulario del login */}
-            <div className="space-y-5 mb-6">
-            <div className="relative">
-                <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500" />
-                <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full pl-12 pr-4 py-4 bg-transparent border-2 border-teal-700 rounded-full text-white placeholder-gray-500 focus:outline-none focus:border-teal-500 transition-colors"
-                />
-            </div>
+                    <div className="text-sm/6">
+                      <a
+                        href="#"
+                        className="font-semibold text-indigo-600 hover:text-indigo-500"
+                      >
+                        Forgot password?
+                      </a>
+                    </div>
+                  </div>
 
-            <div className="relative">
-                <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500" />
-                <input
-                type="password"
-                name="password"
-                placeholder="Contraseña"
-                value={formData.password}
-                onChange={handleChange}
-                className="w-full pl-12 pr-4 py-4 bg-transparent border-2 border-teal-700 rounded-full text-white placeholder-gray-500 focus:outline-none focus:border-teal-500 transition-colors"
-                />
-            </div>
+                  <div>
+                    <button
+                      type="submit"
+                      className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    >
+                      Sign in
+                    </button>
+                  </div>
+                </form>
+              </div>
 
-            {/* Recuperacion de password y recuerdame */}
-            <div className="flex items-center justify-between">
-                <label className="flex items-center gap-2 cursor-pointer">
-                <div 
-                    onClick={() => setRememberMe(!rememberMe)}
-                    className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
-                    rememberMe ? 'bg-teal-500 border-teal-500' : 'border-teal-700'
-                    }`}
-                >
-                    {rememberMe && (
-                    <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                    </svg>
-                    )}
+              <div className="mt-10">
+                <div className="relative">
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 flex items-center"
+                  >
+                    <div className="w-full border-t border-gray-200" />
+                  </div>
+                  <div className="relative flex justify-center text-sm/6 font-medium">
+                    <span className="bg-white px-6 text-gray-900">
+                      Or continue with
+                    </span>
+                  </div>
                 </div>
-                <span className="text-gray-400 text-sm">Recuérdame</span>
-                </label>
-                <a href="#" className="text-cyan-400 hover:text-cyan-300 text-sm transition-colors">
-                ¿Olvidaste tu contraseña?
-                </a>
+
+                <div className="mt-6 grid grid-cols-2 gap-4">
+                  <a
+                    href="#"
+                    className="flex w-full items-center justify-center gap-3 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs inset-ring inset-ring-gray-300 hover:bg-gray-50 focus-visible:inset-ring-transparent"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      className="h-5 w-5"
+                    >
+                      <path
+                        d="M12.0003 4.75C13.7703 4.75 15.3553 5.36002 16.6053 6.54998L20.0303 3.125C17.9502 1.19 15.2353 0 12.0003 0C7.31028 0 3.25527 2.69 1.28027 6.60998L5.27028 9.70498C6.21525 6.86002 8.87028 4.75 12.0003 4.75Z"
+                        fill="#EA4335"
+                      />
+                      <path
+                        d="M23.49 12.275C23.49 11.49 23.415 10.73 23.3 10H12V14.51H18.47C18.18 15.99 17.34 17.25 16.08 18.1L19.945 21.1C22.2 19.01 23.49 15.92 23.49 12.275Z"
+                        fill="#4285F4"
+                      />
+                      <path
+                        d="M5.26498 14.2949C5.02498 13.5699 4.88501 12.7999 4.88501 11.9999C4.88501 11.1999 5.01998 10.4299 5.26498 9.7049L1.275 6.60986C0.46 8.22986 0 10.0599 0 11.9999C0 13.9399 0.46 15.7699 1.28 17.3899L5.26498 14.2949Z"
+                        fill="#FBBC05"
+                      />
+                      <path
+                        d="M12.0004 24.0001C15.2404 24.0001 17.9654 22.935 19.9454 21.095L16.0804 18.095C15.0054 18.82 13.6204 19.245 12.0004 19.245C8.8704 19.245 6.21537 17.135 5.2654 14.29L1.27539 17.385C3.25539 21.31 7.3104 24.0001 12.0004 24.0001Z"
+                        fill="#34A853"
+                      />
+                    </svg>
+                    <span className="text-sm/6 font-semibold">Google</span>
+                  </a>
+
+                  <a
+                    href="#"
+                    className="flex w-full items-center justify-center gap-3 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs inset-ring inset-ring-gray-300 hover:bg-gray-50 focus-visible:inset-ring-transparent"
+                  >
+                    <svg
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      aria-hidden="true"
+                      className="size-5 fill-[#24292F]"
+                    >
+                      <path
+                        d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z"
+                        clipRule="evenodd"
+                        fillRule="evenodd"
+                      />
+                    </svg>
+                    <span className="text-sm/6 font-semibold">GitHub</span>
+                  </a>
+                </div>
+              </div>
             </div>
-
-            <button
-                onClick={handleSubmit}
-                className="w-full bg-gradient-to-r from-cyan-400 to-teal-400 text-slate-900 font-semibold py-4 rounded-full hover:from-cyan-500 hover:to-teal-500 transition-all transform hover:scale-[1.02] shadow-lg"
-            >
-                Iniciar Sesión
-            </button>
-            </div>
-
-            {/* Enlace de Pantalla Registro*/}
-            <p className="text-center text-gray-400 text-sm">
-            ¿No tienes una cuenta?{' '}
-            <Link to="/Registro">
-                <a href="#" className="text-cyan-400 hover:text-cyan-300 transition-colors font-medium">
-                    Regístrate gratis
-                </a>
-            </Link>
-            </p>
-
-            {/* Terminos y Politicas */}
-            <p className="text-center text-gray-500 text-xs mt-8">
-            Al continuar, aceptas nuestros{' '}
-            <a href="#" className="text-gray-400 hover:text-gray-300 transition-colors">
-                Términos de Servicio
-            </a>
-            {' '}y{' '}
-            <a href="#" className="text-gray-400 hover:text-gray-300 transition-colors">
-                Política de Privacidad
-            </a>
-            </p>
+          </div>
         </div>
+        <div className="relative hidden w-0 flex-1 lg:block">
+          <img
+            alt=""
+            src="https://images.unsplash.com/photo-1496917756835-20cb06e75b4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1908&q=80"
+            className="absolute inset-0 size-full object-cover"
+          />
         </div>
+      </div>
     </>
   );
 }
