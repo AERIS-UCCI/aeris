@@ -5,36 +5,40 @@ import { Link } from "react-router-dom";
 export default function Example() {
   return (
     <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-white">
-        <body class="h-full">
-        ```
-      */}
       <div className="flex min-h-full">
         <div className="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96">
             <div>
               <img
-                alt="Your Company"
-                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                className="h-10 w-auto"
+                alt="Tu Empresa"
+                src="/img/Logo.png"
+                className="h-20 w-auto"
               />
 
+              <p className="mt-1 text-sm/1 text-gray-500">
+                
+                <Link to="/#">
+                  <a
+                    href="#"
+                    className="font-semibold text-emerald-600 hover:text-emerald-500"
+                  >
+               ← Regresar
+                  </a>
+                </Link>
+              </p>
+
               <h2 className="mt-8 text-2xl/9 font-bold tracking-tight text-gray-900">
-                Sign in to your account
+                Inicia sesión en tu cuenta
               </h2>
 
               <p className="mt-2 text-sm/6 text-gray-500">
-                Not a member?{" "}
+                ¿No tienes una cuenta?{" "}
                 <Link to="/Registro">
                   <a
                     href="#"
-                    className="font-semibold text-indigo-600 hover:text-indigo-500"
+                    className="font-semibold text-emerald-600 hover:text-emerald-500"
                   >
-                    Start a 14 day free trial
+Crea una nueva cuenta aqui
                   </a>
                 </Link>
               </p>
@@ -48,7 +52,7 @@ export default function Example() {
                       htmlFor="email"
                       className="block text-sm/6 font-medium text-gray-900"
                     >
-                      Email address
+                      Correo electrónico
                     </label>
                     <div className="mt-2">
                       <input
@@ -57,7 +61,7 @@ export default function Example() {
                         type="email"
                         required
                         autoComplete="email"
-                        className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                        className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-emerald-600 sm:text-sm/6"
                       />
                     </div>
                   </div>
@@ -67,7 +71,7 @@ export default function Example() {
                       htmlFor="password"
                       className="block text-sm/6 font-medium text-gray-900"
                     >
-                      Password
+                      Contraseña
                     </label>
                     <div className="mt-2">
                       <input
@@ -76,7 +80,7 @@ export default function Example() {
                         type="password"
                         required
                         autoComplete="current-password"
-                        className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                        className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-emerald-600 sm:text-sm/6"
                       />
                     </div>
                   </div>
@@ -89,7 +93,7 @@ export default function Example() {
                             id="remember-me"
                             name="remember-me"
                             type="checkbox"
-                            className="col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"
+                            className="col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-emerald-600 checked:bg-emerald-600 indeterminate:border-emerald-600 indeterminate:bg-emerald-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"
                           />
                           <svg
                             fill="none"
@@ -117,16 +121,16 @@ export default function Example() {
                         htmlFor="remember-me"
                         className="block text-sm/6 text-gray-900"
                       >
-                        Remember me
+                        Recordarme
                       </label>
                     </div>
 
                     <div className="text-sm/6">
                       <a
                         href="#"
-                        className="font-semibold text-indigo-600 hover:text-indigo-500"
+                        className="font-semibold text-emerald-600 hover:text-emerald-500"
                       >
-                        Forgot password?
+                        ¿Olvidaste tu contraseña?
                       </a>
                     </div>
                   </div>
@@ -134,9 +138,9 @@ export default function Example() {
                   <div>
                     <button
                       type="submit"
-                      className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                      className="flex w-full justify-center rounded-md bg-emerald-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-emerald-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 transition-all duration-200"
                     >
-                      Sign in
+                      Iniciar sesión
                     </button>
                   </div>
                 </form>
@@ -152,7 +156,7 @@ export default function Example() {
                   </div>
                   <div className="relative flex justify-center text-sm/6 font-medium">
                     <span className="bg-white px-6 text-gray-900">
-                      Or continue with
+                      O continúa con
                     </span>
                   </div>
                 </div>
@@ -212,8 +216,8 @@ export default function Example() {
         </div>
         <div className="relative hidden w-0 flex-1 lg:block">
           <img
-            alt=""
-            src="https://images.unsplash.com/photo-1496917756835-20cb06e75b4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1908&q=80"
+            alt="Imagen de fondo"
+            src="https://images.pexels.com/photos/3772612/pexels-photo-3772612.jpeg"
             className="absolute inset-0 size-full object-cover"
           />
         </div>

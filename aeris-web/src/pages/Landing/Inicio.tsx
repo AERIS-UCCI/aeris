@@ -15,6 +15,8 @@ import {
 
 import BentoGrids from "../../components/Sections/BentoGrids";
 import HeroSection from "../../components/Sections/HeroSection";
+import Team from "../../components/Sections/Team";
+import Features from "../../components/Sections/FeaturesSection"
 
 const primaryFeatures = [
   {
@@ -178,193 +180,11 @@ export default function Example() {
     <div className="bg-white">
       <main>
         <HeroSection />
-
+        <Features/>
         <BentoGrids />
-        {/* Feature section */}
-        <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-56 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:text-center">
-            <h2 className="text-base/7 font-semibold text-indigo-600">
-              Deploy faster
-            </h2>
-            <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl lg:text-balance">
-              Everything you need to deploy your app
-            </p>
-            <p className="mt-6 text-lg/8 text-gray-600">
-              Quis tellus eget adipiscing convallis sit sit eget aliquet quis.
-              Suspendisse eget egestas a elementum pulvinar et feugiat blandit
-              at. In mi viverra elit nunc.
-            </p>
-          </div>
-          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-            <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
-              {primaryFeatures.map((feature) => (
-                <div key={feature.name} className="flex flex-col">
-                  <dt className="text-base/7 font-semibold text-gray-900">
-                    <div className="mb-6 flex size-10 items-center justify-center rounded-lg bg-indigo-600">
-                      <feature.icon
-                        aria-hidden="true"
-                        className="size-6 text-white"
-                      />
-                    </div>
-                    {feature.name}
-                  </dt>
-                  <dd className="mt-1 flex flex-auto flex-col text-base/7 text-gray-600">
-                    <p className="flex-auto">{feature.description}</p>
-                    <p className="mt-6">
-                      <a
-                        href={feature.href}
-                        className="text-sm/6 font-semibold text-indigo-600 hover:text-indigo-500"
-                      >
-                        Learn more <span aria-hidden="true">→</span>
-                      </a>
-                    </p>
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </div>
-        {/* Feature section */}
-        <div className="mt-32 sm:mt-56">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="mx-auto max-w-2xl sm:text-center">
-              <h2 className="text-base/7 font-semibold text-indigo-600">
-                Everything you need
-              </h2>
-              <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl sm:text-balance">
-                No server? No problem.
-              </p>
-              <p className="mt-6 text-lg/8 text-gray-600">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Maiores impedit perferendis suscipit eaque, iste dolor
-                cupiditate blanditiis.
-              </p>
-            </div>
-          </div>
-          <div className="relative overflow-hidden pt-16">
-            <div className="mx-auto max-w-7xl px-6 lg:px-8">
-              <img
-                alt="App screenshot"
-                src="https://tailwindcss.com/plus-assets/img/component-images/project-app-screenshot.png"
-                width={2432}
-                height={1442}
-                className="mb-[-12%] rounded-xl shadow-2xl ring-1 ring-gray-900/10"
-              />
-              <div aria-hidden="true" className="relative">
-                <div className="absolute -inset-x-20 bottom-0 bg-linear-to-t from-white pt-[7%]" />
-              </div>
-            </div>
-          </div>
-          <div className="mx-auto mt-16 max-w-7xl px-6 sm:mt-20 md:mt-24 lg:px-8">
-            <dl className="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 text-base/7 text-gray-600 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
-              {secondaryFeatures.map((feature) => (
-                <div key={feature.name} className="relative pl-9">
-                  <dt className="inline font-semibold text-gray-900">
-                    <feature.icon
-                      aria-hidden="true"
-                      className="absolute top-1 left-1 size-5 text-indigo-600"
-                    />
-                    {feature.name}
-                  </dt>{" "}
-                  <dd className="inline">{feature.description}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </div>
-        {/* Stats */}
-        <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-56 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
-            <h2 className="text-base/8 font-semibold text-indigo-600">
-              Our track record
-            </h2>
-            <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
-              Trusted by thousands of creators&nbsp;worldwide
-            </p>
-            <p className="mt-6 text-lg/8 text-gray-700">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores
-              impedit perferendis suscipit eaque, iste dolor cupiditate
-              blanditiis.
-            </p>
-          </div>
-          <dl className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-10 text-gray-900 sm:mt-20 sm:grid-cols-2 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-4">
-            {stats.map((stat) => (
-              <div
-                key={stat.id}
-                className="flex flex-col gap-y-3 border-l border-gray-900/15 pl-6"
-              >
-                <dt className="text-sm/6">{stat.name}</dt>
-                <dd className="order-first text-3xl font-semibold tracking-tight">
-                  {stat.value}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-        {/* CTA section */}
-        <div className="relative isolate mt-32 px-6 py-32 sm:mt-56 sm:py-40 lg:px-8">
-          <svg
-            aria-hidden="true"
-            className="absolute inset-0 -z-10 size-full mask-[radial-gradient(100%_100%_at_top_right,white,transparent)] stroke-gray-200"
-          >
-            <defs>
-              <pattern
-                x="50%"
-                y={0}
-                id="1d4240dd-898f-445f-932d-e2872fd12de3"
-                width={200}
-                height={200}
-                patternUnits="userSpaceOnUse"
-              >
-                <path d="M.5 200V.5H200" fill="none" />
-              </pattern>
-            </defs>
-            <svg x="50%" y={0} className="overflow-visible fill-gray-50">
-              <path
-                d="M-200 0h201v201h-201Z M600 0h201v201h-201Z M-400 600h201v201h-201Z M200 800h201v201h-201Z"
-                strokeWidth={0}
-              />
-            </svg>
-            <rect
-              fill="url(#1d4240dd-898f-445f-932d-e2872fd12de3)"
-              width="100%"
-              height="100%"
-              strokeWidth={0}
-            />
-          </svg>
-          <div
-            aria-hidden="true"
-            className="absolute inset-x-0 top-10 -z-10 flex transform-gpu justify-center overflow-hidden blur-3xl"
-          >
-            <div
-              style={{
-                clipPath:
-                  "polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 5.4% 51.1%, 21.4% 63.9%, 58.9% 0.2%, 73.6% 51.7%)",
-              }}
-              className="aspect-1108/632 w-277 flex-none bg-linear-to-r from-[#80caff] to-[#4f46e5] opacity-20"
-            />
-          </div>
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-4xl font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl">
-              Boost your productivity. Start using our app today.
-            </h2>
-            <p className="mx-auto mt-6 max-w-xl text-lg/8 text-pretty text-gray-600">
-              Incididunt sint fugiat pariatur cupidatat consectetur sit cillum
-              anim id veniam aliqua proident excepteur commodo do ea.
-            </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <a
-                href="#"
-                className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                Get started
-              </a>
-              <a href="#" className="text-sm/6 font-semibold text-gray-900">
-                Learn more <span aria-hidden="true">→</span>
-              </a>
-            </div>
-          </div>
-        </div>
+        
+        <Team/>
+        
       </main>
 
       {/* Footer
