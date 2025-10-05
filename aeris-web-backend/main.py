@@ -5,11 +5,13 @@ import polyline
 from typing import List, Dict
 import random
 from functools import lru_cache
+from pathlib import Path
 
 app = FastAPI()
 
 GOOGLE_API_KEY = "AIzaSyBaGn5ff8WAqZ7_cC_s7o6N59mQzziIoFU"
 AIR_QUALITY_API_URL = "https://airquality.googleapis.com/v1"
+DATA_DIR = Path("aeris-web-backend/data")
 
 app.add_middleware(
     CORSMiddleware,
@@ -315,47 +317,63 @@ def get_route(
     }
 
 @app.get("/heatmap")
-def get_heatmap(lat: float = -12.0464, lng: float = -77.0428, radius: float = 0.05):
+def get_heatmap_from_files():
     """
-    Genera mapa de calor de calidad del aire alrededor de una ubicación.
-    Optimizado con caché para reducir llamadas a la API.
+    Genera el mapa de calor a partir de archivos locales JSON y JSONL
+    ubicados en aeris-web-backend/data.
     """
-    grid_points = []
-    for i in range(-3, 4):
-        for j in range(-3, 4):
-            point_lat = lat + (i * radius)
-            point_lng = lng + (j * radius)
-            grid_points.append((point_lat, point_lng))
-
     heatmap_data = []
 
-    for point_lat, point_lng in grid_points:
+    # Recorremos todos los archivos en la carpeta
+    for file in DATA_DIR.glob("*"):
+        if not file.is_file():
+            continue
+
         try:
-            air_data = get_air_quality_cached(point_lat, point_lng)
-            aqi = air_data.get("aqi", 0)
-            
-            if aqi == 0:
-                aqi = random.uniform(20, 120)
-            
-            risk_level, _, _ = classify_aqi(aqi)
-            
-            heatmap_data.append({
-                "lat": point_lat,
-                "lng": point_lng,
-                "intensity": round(aqi, 1),
-                "risk_level": risk_level
-            })
+            # Leer archivos .json
+            if file.suffix == ".json":
+                with open(file, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+
+            # Leer archivos .jsonl (línea por línea)
+            elif file.suffix == ".jsonl":
+                data = []
+                with open(file, "r", encoding="utf-8") as f:
+                    for line in f:
+                        line = line.strip()
+                        if line:
+                            data.append(json.loads(line))
+            else:
+                continue  # Ignora otros tipos de archivos
+
+            # Procesar los puntos
+            for point in data:
+                lat = point.get("lat")
+                lng = point.get("lng")
+                intensity = point.get("intensity", 0.0)
+
+                risk_level, _, _ = classify_aqi(intensity)
+                heatmap_data.append({
+                    "lat": lat,
+                    "lng": lng,
+                    "intensity": round(float(intensity), 2),
+                    "risk_level": risk_level
+                })
 
         except Exception as e:
-            print(f"Error al obtener punto {point_lat},{point_lng}: {e}")
-            heatmap_data.append({
-                "lat": point_lat,
-                "lng": point_lng,
-                "intensity": random.uniform(30, 80),
-                "risk_level": "medium"
-            })
+            print(f"Error leyendo {file.name}: {e}")
 
-    return {"points": heatmap_data, "center": {"lat": lat, "lng": lng}}
+    # Calcular centro promedio
+    if heatmap_data:
+        avg_lat = sum(p["lat"] for p in heatmap_data) / len(heatmap_data)
+        avg_lng = sum(p["lng"] for p in heatmap_data) / len(heatmap_data)
+    else:
+        avg_lat, avg_lng = 0.0, 0.0
+
+    return {
+        "points": heatmap_data,
+        "center": {"lat": avg_lat, "lng": avg_lng}
+    }
 
 @app.get("/")
 def root():
