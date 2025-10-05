@@ -90,6 +90,7 @@ npm install lucide-react
 npm install leaflet.heat
 npm install leaflet leaflet.heat react-leaflet
 npm install polyline
+npm install gh-pages --save-dev
 
 npm run dev
 

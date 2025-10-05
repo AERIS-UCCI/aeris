@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { MapPin, Search, Cloud, Navigation, Car, Bike, Footprints, AlertCircle, CheckCircle, AlertTriangle, Wind, TrendingUp, TrendingDown, Layers } from 'lucide-react';
+import SecondHeader from '../../components/Header/SecondHeader';
 
 function decodePolyline(encoded) {
   const poly = [];
@@ -492,18 +493,7 @@ export default function AerisRoutePlanner() {
 
   return (
     <div className="h-screen flex flex-col bg-slate-900">
-      <div className="bg-gradient-to-r from-slate-800 to-slate-900 border-b border-slate-700/50 px-6 py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Wind className="w-8 h-8 text-teal-400" />
-            <h1 className="text-2xl font-bold text-white">Aeris Route Planner</h1>
-          </div>
-          <div className="flex items-center gap-2 text-sm text-gray-400">
-            <MapPin className="w-4 h-4" />
-            {locationName}
-          </div>
-        </div>
-      </div>
+      <SecondHeader/>
 
       <div className="flex-1 flex overflow-hidden">
         <div className="w-80 bg-slate-800/90 border-r border-slate-700/50 flex flex-col overflow-hidden">
