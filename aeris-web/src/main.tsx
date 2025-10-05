@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+
+import "./i18n";
 import { createHashRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 
@@ -39,7 +41,10 @@ const router = createHashRouter([
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
+
   <React.StrictMode>
     <RouterProvider router={router} />
+    
   </React.StrictMode>,
+  
 )

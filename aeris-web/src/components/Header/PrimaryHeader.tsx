@@ -27,7 +27,8 @@ import {
   PlayCircleIcon,
 } from "@heroicons/react/20/solid";
 
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const productos = [
   {
@@ -74,6 +75,13 @@ const acciones = [
 
 export default function HeaderAeris() {
   const [menuMovilAbierto, setMenuMovilAbierto] = useState(false);
+  const { t, i18n } = useTranslation();
+
+  // 🧠 Cambiar idioma entre ES y EN
+  const toggleLanguage = () => {
+    const newLang = i18n.language === "es" ? "en" : "es";
+    i18n.changeLanguage(newLang);
+  };
 
   return (
     <header className="bg-white">
@@ -81,12 +89,15 @@ export default function HeaderAeris() {
         aria-label="Global"
         className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
       >
+        {/* Logo */}
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">AERIS</span>
             <img alt="Logo AERIS" src="/img/Logo.png" className="h-20 w-auto" />
           </a>
         </div>
+
+        {/* Botón menú móvil */}
         <div className="flex lg:hidden">
           <button
             type="button"
@@ -98,11 +109,11 @@ export default function HeaderAeris() {
           </button>
         </div>
 
-        {/* Navegación en pantallas grandes */}
+        {/* Navegación principal */}
         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
           <Popover className="relative">
             <PopoverButton className="flex items-center gap-x-1 text-sm font-semibold text-gray-900">
-              Productos
+              {t("navbar.home")}
               <ChevronDownIcon
                 aria-hidden="true"
                 className="size-5 flex-none text-gray-400"
@@ -157,24 +168,36 @@ export default function HeaderAeris() {
           </Popover>
 
           <a href="#" className="text-sm font-semibold text-gray-900">
-            Funciones
+            {t("navbar.features")}
           </a>
           <a href="#" className="text-sm font-semibold text-gray-900">
-            Comunidad
+            {t("navbar.community")}
           </a>
           <a href="#" className="text-sm font-semibold text-gray-900">
-            Equipo
+            {t("navbar.team")}
           </a>
         </PopoverGroup>
 
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-  <Link
-    to="/Login"
-    className="text-sm leading-6 font-semibold text-emerald-600 hover:text-emerald-700"
-  >
-    Iniciar Sesión <span aria-hidden="true">&rarr;</span>
-  </Link>
-</div>
+        {/* 🔁 Sección derecha separada */}
+        <div className="hidden lg:flex items-center gap-x-1">
+          {/* Botón de Login */}
+          {/* <Link
+            to="/Login"
+            className="text-sm leading-6 font-semibold text-emerald-600 hover:text-emerald-700"
+          >
+            {t("navbar.login")} <span aria-hidden="true">&rarr;</span>
+          </Link> */}
+
+          {/* Botón de idioma separado */}
+          <div className="mx-6 h-6 pl-6 border-l border-gray-300">
+            <button
+              onClick={toggleLanguage}
+              className="px-3 py-1.5 text-sm font-semibold border border-emerald-600 text-emerald-600 rounded-lg hover:bg-emerald-50 transition"
+            >
+              {i18n.language === "es" ? "EN" : "ES"}
+            </button>
+          </div>
+        </div>
       </nav>
 
       {/* Menú móvil */}
@@ -205,7 +228,7 @@ export default function HeaderAeris() {
               <div className="space-y-2 py-6">
                 <Disclosure as="div" className="-mx-3">
                   <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base font-semibold text-gray-900 hover:bg-gray-50">
-                    Productos
+                    {t("navbar.home")}
                     <ChevronDownIcon
                       aria-hidden="true"
                       className="size-5 flex-none group-data-open:rotate-180"
@@ -229,29 +252,37 @@ export default function HeaderAeris() {
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50"
                 >
-                  Funciones
+                  {t("navbar.features")}
                 </a>
                 <a
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50"
                 >
-                  Comunidad
+                  {t("navbar.community")}
                 </a>
                 <a
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50"
                 >
-                  Equipo
+                  {t("navbar.team")}
                 </a>
               </div>
 
-              <div className="py-6">
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold text-emerald-600 hover:bg-gray-50"
+              {/* 🔁 Idioma y login separados en móvil */}
+              <div className="py-6 flex flex-col gap-4 border-t border-gray-200 mt-4">
+                <Link
+                  to="/Login"
+                  className="text-base font-semibold text-emerald-600 hover:text-emerald-700 text-center"
                 >
-                  Iniciar sesión
-                </a>
+                  {t("navbar.login")}
+                </Link>
+
+                <button
+                  onClick={toggleLanguage}
+                  className="px-3 py-1.5 mx-auto text-sm font-semibold border border-emerald-600 text-emerald-600 rounded-lg hover:bg-emerald-50 transition w-fit"
+                >
+                  {i18n.language === "es" ? "EN" : "ES"}
+                </button>
               </div>
             </div>
           </div>

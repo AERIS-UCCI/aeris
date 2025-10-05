@@ -1,0 +1,17 @@
+{
+  "navbar": {
+    "home": "Inicio",
+    
+    "features": "Funciones",
+    "community": "Comunidad",
+    "team": "Equipo",
+    "login": "Iniciar Sesión",
+    "register": "Registrarse"
+  },
+ "hero": {
+  "title": "AERIS v1.0 combina datos satelitales y modelos climáticos",
+  "subtitle": "Recibe alertas personalizadas y rutas ecológicas inteligentes en tiempo real.",
+  "cta": "Explorar ahora",
+  "readMore": "Leer más"
+}
+}
