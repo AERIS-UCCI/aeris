@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
-import { MapPin, Search, Cloud, Navigation, Car, Bike, Footprints, AlertCircle, CheckCircle, AlertTriangle, Wind, TrendingUp, TrendingDown, Layers } from 'lucide-react';
+import { Search, Cloud, Navigation, Car, Bike, Footprints, AlertCircle, CheckCircle, AlertTriangle, TrendingUp, TrendingDown, Layers } from 'lucide-react';
 import SecondHeader from '../../components/Header/SecondHeader';
 
-function decodePolyline(encoded) {
-  const poly = [];
+function decodePolyline(encoded: string): [number, number][] {
+  const poly: [number, number][] = [];
   let index = 0, len = encoded.length;
   let lat = 0, lng = 0;
 
@@ -36,24 +36,24 @@ export default function AerisRoutePlanner() {
   const [origin, setOrigin] = useState('');
   const [destination, setDestination] = useState('');
   const [transportMode, setTransportMode] = useState('walking');
-  const [temperature, setTemperature] = useState(null);
+  const [temperature, setTemperature] = useState<number | null>(null);
   const [weatherCondition, setWeatherCondition] = useState('Cargando...');
-  const [maxTemp, setMaxTemp] = useState(null);
-  const [minTemp, setMinTemp] = useState(null);
-  const [humidity, setHumidity] = useState(null);
+  const [maxTemp, setMaxTemp] = useState<number | null>(null);
+  const [minTemp, setMinTemp] = useState<number | null>(null);
+  const [humidity, setHumidity] = useState<number | null>(null);
   const [locationName, setLocationName] = useState('Lima, PE');
-  const [userLocation, setUserLocation] = useState(null);
-  const [routes, setRoutes] = useState([]);
+  const [userLocation, setUserLocation] = useState<[number, number] | null>(null);
+  const [routes, setRoutes] = useState<any[]>([]);
   const [selectedRoute, setSelectedRoute] = useState(0);
-  const [originSuggestions, setOriginSuggestions] = useState([]);
-  const [destinationSuggestions, setDestinationSuggestions] = useState([]);
-  const [arrivalTime, setArrivalTime] = useState(null);
+  const [originSuggestions, setOriginSuggestions] = useState<any[]>([]);
+  const [destinationSuggestions, setDestinationSuggestions] = useState<any[]>([]);
+  const [arrivalTime, setArrivalTime] = useState<string | null>(null);
   const [isGeolocating, setIsGeolocating] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [comparison, setComparison] = useState(null);
+  const [error, setError] = useState<string | null>(null);
+  const [comparison, setComparison] = useState<any>(null);
   const [showHeatmap, setShowHeatmap] = useState(false);
-  const [heatmapData, setHeatmapData] = useState(null);
+  const [heatmapData, setHeatmapData] = useState<any>(null);
 
   const API_URL = 'http://localhost:8000';
 
@@ -67,7 +67,7 @@ export default function AerisRoutePlanner() {
     }
   }, [transportMode]);
 
-  const getWeatherData = async (lat, lng) => {
+  const getWeatherData = async (lat: number, lng: number) => {
     try {
       const res = await fetch(
         `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&current=temperature_2m,relative_humidity_2m,weather_code&daily=temperature_2m_max,temperature_2m_min&timezone=auto`
@@ -78,7 +78,7 @@ export default function AerisRoutePlanner() {
         setTemperature(Math.round(data.current.temperature_2m));
         setHumidity(data.current.relative_humidity_2m);
         
-        const weatherDescriptions = {
+        const weatherDescriptions: { [key: number]: string } = {
           0: 'Despejado', 1: 'Mayormente despejado', 2: 'Parcialmente nublado',
           3: 'Nublado', 45: 'Neblina', 61: 'Lluvia ligera', 63: 'Lluvia moderada'
         };
@@ -179,7 +179,7 @@ export default function AerisRoutePlanner() {
     }
   };
 
-  const handleOriginChange = async (value) => {
+  const handleOriginChange = async (value: string) => {
     setOrigin(value);
     if (value.length > 3) {
       const res = await fetch(
@@ -192,7 +192,7 @@ export default function AerisRoutePlanner() {
     }
   };
 
-  const handleDestinationChange = async (value) => {
+  const handleDestinationChange = async (value: string) => {
     setDestination(value);
     if (value.length > 3) {
       const res = await fetch(
@@ -205,7 +205,7 @@ export default function AerisRoutePlanner() {
     }
   };
 
-  const getTransportIcon = (mode) => {
+  const getTransportIcon = (mode: string) => {
     switch(mode) {
       case 'car': return <Car className="w-5 h-5" />;
       case 'bicycle': return <Bike className="w-5 h-5" />;
@@ -213,7 +213,7 @@ export default function AerisRoutePlanner() {
     }
   };
 
-  const getRiskIcon = (riskLevel) => {
+  const getRiskIcon = (riskLevel: string) => {
     switch(riskLevel) {
       case 'low': return <CheckCircle className="w-4 h-4 text-green-500" />;
       case 'medium': return <AlertTriangle className="w-4 h-4 text-orange-500" />;
@@ -222,7 +222,7 @@ export default function AerisRoutePlanner() {
     }
   };
 
-  const getRouteColor = (riskColor) => {
+  const getRouteColor = (riskColor: string) => {
     switch(riskColor) {
       case 'green': return '#10b981';
       case 'orange': return '#f59e0b';
@@ -231,7 +231,7 @@ export default function AerisRoutePlanner() {
     }
   };
 
-  const getHeatmapColor = (intensity) => {
+  const getHeatmapColor = (intensity: number) => {
     if (intensity <= 50) return '#10b981';
     if (intensity <= 100) return '#f59e0b';
     return '#ef4444';
@@ -239,9 +239,9 @@ export default function AerisRoutePlanner() {
 
   const MapView = () => {
     const mapContainerRef = useRef(null);
-    const leafletMapRef = useRef(null);
-    const markersRef = useRef([]);
-    const polylinesRef = useRef([]);
+    const leafletMapRef = useRef<any>(null);
+    const markersRef = useRef<any[]>([]);
+    const polylinesRef = useRef<any[]>([]);
     const leafletLoadedRef = useRef(false);
 
     useEffect(() => {
@@ -254,7 +254,7 @@ export default function AerisRoutePlanner() {
         document.head.appendChild(link);
       }
 
-      if (!window.L) {
+      if (!(window as any).L) {
         const script = document.createElement('script');
         script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
         script.async = true;
@@ -272,7 +272,7 @@ export default function AerisRoutePlanner() {
     const initializeMap = () => {
       if (!mapContainerRef.current || leafletMapRef.current) return;
 
-      const L = window.L;
+      const L = (window as any).L;
       const center = userLocation || [-12.0464, -77.0428];
       
       leafletMapRef.current = L.map(mapContainerRef.current, {
@@ -284,7 +284,7 @@ export default function AerisRoutePlanner() {
         attribution: '© OpenStreetMap'
       }).addTo(leafletMapRef.current);
 
-      delete L.Icon.Default.prototype._getIconUrl;
+      delete (L.Icon.Default.prototype as any)._getIconUrl;
       L.Icon.Default.mergeOptions({
         iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
         iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
@@ -293,15 +293,15 @@ export default function AerisRoutePlanner() {
     };
 
     useEffect(() => {
-      if (!leafletMapRef.current || !window.L || !userLocation) return;
+      if (!leafletMapRef.current || !(window as any).L || !userLocation) return;
 
-      const L = window.L;
+      const L = (window as any).L;
       const map = leafletMapRef.current;
 
       // Limpiar solo los marcadores que no son del heatmap
-      const regularMarkers = markersRef.current.filter(m => !m.options || !m.options.isHeatmap);
-      regularMarkers.forEach(m => map.removeLayer(m));
-      markersRef.current = markersRef.current.filter(m => m.options && m.options.isHeatmap);
+      const regularMarkers = markersRef.current.filter(m => !(m as any).isHeatmap);
+      regularMarkers.forEach((m: any) => map.removeLayer(m));
+      markersRef.current = markersRef.current.filter(m => (m as any).isHeatmap);
 
       // Marcador de ubicación actual (azul)
       const userMarker = L.marker(userLocation, {
@@ -321,27 +321,28 @@ export default function AerisRoutePlanner() {
     }, [userLocation]);
 
     useEffect(() => {
-      if (!leafletMapRef.current || !window.L) return;
+      if (!leafletMapRef.current || !(window as any).L) return;
 
-      const L = window.L;
+      const L = (window as any).L;
       const map = leafletMapRef.current;
 
       // Limpiar círculos del heatmap anteriores
-      const heatmapMarkers = markersRef.current.filter(m => m.options && m.options.isHeatmap);
-      heatmapMarkers.forEach(m => map.removeLayer(m));
-      markersRef.current = markersRef.current.filter(m => !m.options || !m.options.isHeatmap);
+      const heatmapMarkers = markersRef.current.filter(m => (m as any).isHeatmap);
+      heatmapMarkers.forEach((m: any) => map.removeLayer(m));
+      markersRef.current = markersRef.current.filter(m => !(m as any).isHeatmap);
 
       if (showHeatmap && heatmapData) {
-        heatmapData.points.forEach(point => {
+        heatmapData.points.forEach((point: any) => {
           const circle = L.circle([point.lat, point.lng], {
             color: getHeatmapColor(point.intensity),
             fillColor: getHeatmapColor(point.intensity),
             fillOpacity: 0.6,
             opacity: 0.8,
             radius: 800,
-            weight: 2,
-            isHeatmap: true
+            weight: 2
           }).addTo(map);
+
+          (circle as any).isHeatmap = true;
 
           const riskText = point.risk_level === 'low' ? 'Baja exposición' : 
                           point.risk_level === 'medium' ? 'Exposición moderada' : 'Alta exposición';
@@ -367,19 +368,19 @@ export default function AerisRoutePlanner() {
     }, [showHeatmap, heatmapData]);
 
     useEffect(() => {
-      if (!leafletMapRef.current || !window.L || routes.length === 0) return;
+      if (!leafletMapRef.current || !(window as any).L || routes.length === 0) return;
 
-      const L = window.L;
+      const L = (window as any).L;
       const map = leafletMapRef.current;
 
       // Limpiar polylines y segmentos anteriores
-      polylinesRef.current.forEach(p => map.removeLayer(p));
+      polylinesRef.current.forEach((p: any) => map.removeLayer(p));
       polylinesRef.current = [];
 
       // Limpiar marcadores de origen/destino anteriores
-      const routeMarkers = markersRef.current.filter(m => m.options && (m.options.isOrigin || m.options.isDestination || m.options.isSegment));
-      routeMarkers.forEach(m => map.removeLayer(m));
-      markersRef.current = markersRef.current.filter(m => !m.options || (!m.options.isOrigin && !m.options.isDestination && !m.options.isSegment));
+      const routeMarkers = markersRef.current.filter(m => (m as any).isOrigin || (m as any).isDestination || (m as any).isSegment);
+      routeMarkers.forEach((m: any) => map.removeLayer(m));
+      markersRef.current = markersRef.current.filter(m => !(m as any).isOrigin && !(m as any).isDestination && !(m as any).isSegment);
 
       routes.forEach((route, idx) => {
         const decodedPath = decodePolyline(route.overview_polyline.points);
@@ -416,7 +417,7 @@ export default function AerisRoutePlanner() {
 
         // ESPECTRO: Dibujar segmentos de contaminación sobre la ruta seleccionada
         if (idx === selectedRoute && route.exposure?.segments && route.exposure.segments.length > 0) {
-          route.exposure.segments.forEach((segment, segIdx) => {
+          route.exposure.segments.forEach((segment: any, segIdx: number) => {
             const segColor = getRouteColor(segment.risk_color);
             
             // Círculo pequeño en cada punto de muestreo
@@ -426,9 +427,10 @@ export default function AerisRoutePlanner() {
               color: '#fff',
               weight: 2,
               opacity: 1,
-              fillOpacity: 0.8,
-              isSegment: true
+              fillOpacity: 0.8
             }).addTo(map);
+
+            (circle as any).isSegment = true;
 
             circle.bindPopup(`
               <div style="font-family: sans-serif; padding: 2px;">
@@ -459,10 +461,10 @@ export default function AerisRoutePlanner() {
               iconAnchor: [12, 41],
               popupAnchor: [1, -34],
               shadowSize: [41, 41]
-            }),
-            isOrigin: true
+            })
           }).addTo(map);
           originMarker.bindPopup('<strong>📍 Origen</strong>');
+          (originMarker as any).isOrigin = true;
           markersRef.current.push(originMarker);
 
           // Marcador de DESTINO (rojo)
@@ -474,10 +476,10 @@ export default function AerisRoutePlanner() {
               iconAnchor: [12, 41],
               popupAnchor: [1, -34],
               shadowSize: [41, 41]
-            }),
-            isDestination: true
+            })
           }).addTo(map);
           destinationMarker.bindPopup('<strong>🎯 Destino</strong>');
+          (destinationMarker as any).isDestination = true;
           markersRef.current.push(destinationMarker);
 
           // Ajustar vista para mostrar toda la ruta
@@ -740,7 +742,7 @@ export default function AerisRoutePlanner() {
                   Recomendaciones - {routes[selectedRoute].exposure.health_recommendations.level}
                 </h3>
                 <ul className="space-y-1">
-                  {routes[selectedRoute].exposure.health_recommendations.recommendations.map((rec, idx) => (
+                  {routes[selectedRoute].exposure.health_recommendations.recommendations.map((rec: any, idx: number) => (
                     <li key={idx} className="text-teal-200 text-xs leading-relaxed">• {rec}</li>
                   ))}
                 </ul>

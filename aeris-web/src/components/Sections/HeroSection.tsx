@@ -1,21 +1,9 @@
 'use client'
 
-import { useState } from 'react'
-import { Dialog, DialogPanel } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from "react-i18next";
 
 
-
-const navigation = [
-  { name: 'Inicio', href: '#' },
-  { name: 'Caracteristicas', href: '#' },
-  { name: 'Sobre Nosotros', href: '#' },
-  { name: 'Contacto', href: '#' },
-]
-
 export default function HeroSection() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { t } = useTranslation();
 
   return (

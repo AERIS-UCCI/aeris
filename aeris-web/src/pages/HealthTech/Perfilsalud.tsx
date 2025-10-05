@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Bell, Search, Check, AlertCircle } from 'lucide-react';
+import { useState } from 'react';
+import { Check, AlertCircle } from 'lucide-react';
 
 import SecondHeader from "../../components/Header/SecondHeader"
 import SeleccionarOpciones from "../../components/UI/SeleccionarOpciones";

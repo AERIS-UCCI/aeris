@@ -29,6 +29,7 @@ import {
 
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import logo from './../../../public/img/Logo.png';
 
 const productos = [
   {
@@ -93,7 +94,7 @@ export default function HeaderAeris() {
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">AERIS</span>
-            <img alt="Logo AERIS" src="/img/Logo.png" className="h-20 w-auto" />
+            <img alt="Logo AERIS" src={logo} className="h-20 w-auto" />
           </a>
         </div>
 
