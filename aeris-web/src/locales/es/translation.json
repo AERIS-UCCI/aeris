@@ -9,9 +9,35 @@
     "register": "Registrarse"
   },
  "hero": {
-  "title": "AERIS v1.0 combina datos satelitales y modelos climáticos",
-  "subtitle": "Recibe alertas personalizadas y rutas ecológicas inteligentes en tiempo real.",
+  "title": "Respira un aire más limpio, vive mejor. ",
+  "subtitle": "AERIS te ayuda a planificar tus rutas y actividades diarias considerando la calidad del aire en tiempo real.",
   "cta": "Explorar ahora",
   "readMore": "Leer más"
+},
+"boton":{
+  "action": "Iniciar AERIS",
+  "informacion": "Leer más"
+
+},
+"features": {
+  "title": "Anticípate al clima con AERIS.",
+  "description": "AERIS te ayuda a planificar tus rutas y actividades diarias considerando la calidad del aire en tiempo real.",
+  "list": [
+      {
+        "name": "Análisis en tiempo real.",
+        "description": "AERIS procesa datos satelitales y climáticos con IA para ofrecerte alertas precisas en segundos."
+      },
+      {
+        "name": "Seguridad total de datos.",
+        "description": "Tu información ambiental y de ubicación se cifra con los más altos estándares de privacidad."
+      },
+      {
+        "name": "Respaldo inteligente.",
+        "description": "Nuestro sistema guarda automáticamente tus configuraciones y rutas ecológicas en la nube."
+      }
+    ]
 }
 }
+
+
+

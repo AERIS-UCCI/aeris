@@ -90,7 +90,10 @@ npm install lucide-react
 npm install leaflet.heat
 npm install leaflet leaflet.heat react-leaflet
 npm install polyline
-npm install gh-pages --save-dev
+
+Para que la lading funcione tienen que instalar adicionalmente 
+
+npm install i18next react-i18next
 
 npm run dev
 
@@ -99,6 +102,6 @@ npm run dev
 
 python -m venv venv
 .\venv\Scripts\activate
-pip install fastapi uvicorn requests polyline
+pip install fastapi uvicorn requests
 
 uvicorn main:app --reload --port 8000

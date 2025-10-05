@@ -68,19 +68,18 @@ export default function HeroSection() {
                     {t("hero.title")}
                   </h1>
                   <p className="mt-8 text-lg font-medium text-pretty text-gray-500 sm:max-w-md sm:text-xl/8 lg:max-w-none">
-                    AERIS v1.0 integra inteligencia artificial, datos satelitales y
-                modelos climáticos para entregarte alertas personalizadas y
-                rutas ecológicas inteligentes.
+                    
+                {t("hero.subtitle")}
                   </p>
                   <div className="mt-10 flex items-center gap-x-6">
                     <a
                       href="#"
                       className="rounded-md bg-emerald-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-emerald-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
-                      Iniciar Ahora
+                      {t("boton.action")}
                     </a>
                     <a href="#" className="text-sm/6 font-semibold text-gray-900">
-                      Leer más <span aria-hidden="true">→</span>
+                      {t("boton.informacion")} <span aria-hidden="true">→</span>
                     </a>
                   </div>
                 </div>
@@ -107,7 +106,7 @@ export default function HeroSection() {
                     <div className="relative">
                       <img
                         alt=""
-                        src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=focalpoint&fp-x=.4&w=396&h=528&q=80"
+                        src="https://cdn.pixabay.com/photo/2020/03/24/02/27/promenade-4962564_1280.jpg"
                         className="aspect-2/3 w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
                       />
                       <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-gray-900/10 ring-inset" />
@@ -117,7 +116,7 @@ export default function HeroSection() {
                     <div className="relative">
                       <img
                         alt=""
-                        src="https://images.unsplash.com/photo-1670272504528-790c24957dda?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=left&w=400&h=528&q=80"
+                        src="https://cdn.pixabay.com/photo/2022/12/27/21/37/bike-7681817_1280.jpg"
                         className="aspect-2/3 w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
                       />
                       <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-gray-900/10 ring-inset" />
@@ -125,7 +124,7 @@ export default function HeroSection() {
                     <div className="relative">
                       <img
                         alt=""
-                        src="https://images.unsplash.com/photo-1670272505284-8faba1c31f7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80"
+                        src="https://cdn.pixabay.com/photo/2015/04/15/21/05/motorcycle-724607_1280.jpg"
                         className="aspect-2/3 w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
                       />
                       <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-gray-900/10 ring-inset" />

@@ -58,23 +58,23 @@ export default function Perfil() {
         {/* Alergias */}
 
 
-            <SeleccionarOpciones
+             <SeleccionarOpciones
                     title="Alergias"
                     label="Alergia"
                     value={allergy}
                     onChange={setAllergy}
                     options={[
                     { value: "", label: "Seleccionar álergia" },
-                    { value: "polen", label: "Polen" },
-                    { value: "acaros", label: "Ácaros" },
+                    
+                    { value: "acaros", label: "Ácaros" }, 
                     { value: "moho", label: "Moho" },
                     { value: "ninguna", label: "Ninguna" },
                     ]}
-            />
+            /> 
 
         {/* Unidades de Medida */}
 
-            <SeleccionarOpciones
+            {/* <SeleccionarOpciones
                     title="Unidades de Medida"
                     label="Unidad de temperatura"
                     value={temperatureUnit}
@@ -84,7 +84,7 @@ export default function Perfil() {
                     { value: "ppm", label: "(ppm) Partes por millon " },
                     { value: "acaros", label: "(μg/m³) microgramo/metro cúbico" },
                     ]}
-            />
+            /> */}
 
 
             {/* Otras Sensibilidades */}
