@@ -98,6 +98,6 @@ npm run dev
 
 python -m venv venv
 .\venv\Scripts\activate
-pip install fastapi uvicorn requests
+pip install fastapi uvicorn requests polyline
 
 uvicorn main:app --reload --port 8000
