@@ -37,7 +37,11 @@ npm run dev
 ```
 
 Por defecto, la aplicación estará disponible en:  
-👉 [http://localhost:5173](http://localhost:5173)
+👉 [http://localhost:5173](http://localhost:5173) en local
+
+De manera publica la web estara disponible en:
+
+👉 nasaspacechallenge.olympotecnologia.com([nasaspacechallenge.olympotecnologia.com](https://nasaspacechallenge.olympotecnologia.com/))
 
 ---
 
@@ -136,6 +140,3 @@ Asegúrate de tener instaladas las siguientes herramientas:
 
 ---
 
-## ✨ Autor / Créditos
-
-Proyecto desarrollado con ❤️ por [Tu Nombre o Equipo].
