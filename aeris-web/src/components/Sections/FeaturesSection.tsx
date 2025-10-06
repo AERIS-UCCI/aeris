@@ -1,24 +1,12 @@
-import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/react/20/solid'
 
-const features = [
-  {
-    name: 'Análisis en tiempo real.',
-    description: 'AERIS procesa datos satelitales y climáticos con IA para ofrecerte alertas precisas en segundos.',
-    icon: CloudArrowUpIcon,
-  },
-  {
-    name: 'Seguridad total de datos.',
-    description: 'Tu información ambiental y de ubicación se cifra con los más altos estándares de privacidad.',
-    icon: LockClosedIcon,
-  },
-  {
-    name: 'Respaldo inteligente.',
-    description: 'Nuestro sistema guarda automáticamente tus configuraciones y rutas ecológicas en la nube.',
-    icon: ServerIcon,
-  },
-]
+import { useTranslation } from "react-i18next";
+
+
 
 export default function Example() {
+  const { t } = useTranslation();
+  const features = t("features.list", { returnObjects: true });
+
   return (
     <div className="bg-white py-24">
       <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -27,11 +15,12 @@ export default function Example() {
             
             <div className="lg:row-start-2 lg:max-w-md">
               <h2 className="text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl">
-                Anticípate al clima con AERIS.
+                
+                {t("features.title")}
               </h2>
               <p className="mt-6 text-lg/8 text-gray-300">
-                AERIS v1.0 integra inteligencia artificial, datos satelitales y modelos climáticos para predecir
-                condiciones ambientales y guiarte con rutas ecológicas seguras y eficientes.
+                
+                {t("features.description")}
               </p>
             </div>
 

@@ -190,12 +190,12 @@ export default function HeaderAeris() {
           </Link> */}
 
           {/* Botón de idioma separado */}
-          <div className="mx-6 h-6 pl-6 border-l border-gray-300">
+          <div className="mx-6 h-6 pl-6 mb-2 border-l border-gray-300">
             <button
               onClick={toggleLanguage}
               className="px-3 py-1.5 text-sm font-semibold border border-emerald-600 text-emerald-600 rounded-lg hover:bg-emerald-50 transition"
             >
-              {i18n.language === "es" ? "EN" : "ES"}
+              {i18n.language === "es" ? "English" : "Español"}
             </button>
           </div>
         </div>

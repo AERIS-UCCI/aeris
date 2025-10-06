@@ -9,10 +9,17 @@
     "register": "Sign Up"
   },
   "hero": {
-  "title": "AERIS v1.0 combines satellite data and climate models",
-  "subtitle": "Get personalized alerts and intelligent eco routes in real time.",
+  "title": "Breathe cleaner air, live better.",
+  "subtitle": "AERIS helps you plan your routes and daily activities based on real-time air quality.",
   "cta": "Explore now",
   "readMore": "Read more"
+}, 
+
+"features": {
+  "title": "Stay ahead of the weather with AERIS.",
+  "description": "AERIS helps you plan your routes and daily activities based on real-time air quality.",
+  "cta": "Explorar ahora",
+  "readMore": "Leer más"
 }
   
   
