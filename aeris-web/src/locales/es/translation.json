@@ -1,28 +1,27 @@
 {
   "navbar": {
     "home": "Inicio",
-    
+
     "features": "Funciones",
     "community": "Comunidad",
     "team": "Equipo",
     "login": "Iniciar Sesión",
     "register": "Registrarse"
   },
- "hero": {
-  "title": "Respira un aire más limpio, vive mejor. ",
-  "subtitle": "AERIS te ayuda a planificar tus rutas y actividades diarias considerando la calidad del aire en tiempo real.",
-  "cta": "Explorar ahora",
-  "readMore": "Leer más"
-},
-"boton":{
-  "action": "Iniciar AERIS",
-  "informacion": "Leer más"
-
-},
-"features": {
-  "title": "Anticípate al clima con AERIS.",
-  "description": "AERIS te ayuda a planificar tus rutas y actividades diarias considerando la calidad del aire en tiempo real.",
-  "list": [
+  "hero": {
+    "title": "Respira un aire más limpio, vive mejor. ",
+    "subtitle": "AERIS te ayuda a planificar tus rutas y actividades diarias considerando la calidad del aire en tiempo real.",
+    "cta": "Explorar ahora",
+    "readMore": "Leer más"
+  },
+  "boton": {
+    "action": "Iniciar AERIS",
+    "informacion": "Ver código fuente"
+  },
+  "features": {
+    "title": "Anticípate al clima con AERIS.",
+    "description": "AERIS te ayuda a planificar tus rutas y actividades diarias considerando la calidad del aire en tiempo real.",
+    "list": [
       {
         "name": "Análisis en tiempo real.",
         "description": "AERIS procesa datos satelitales y climáticos con IA para ofrecerte alertas precisas en segundos."
@@ -36,8 +35,5 @@
         "description": "Nuestro sistema guarda automáticamente tus configuraciones y rutas ecológicas en la nube."
       }
     ]
+  }
 }
-}
-
-
-
