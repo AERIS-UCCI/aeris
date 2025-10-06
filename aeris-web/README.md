@@ -1,105 +1,141 @@
-# React + TypeScript + Vite
+# 🌍 Proyecto - Instalación y Configuración
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-# AERIS
-
-Este proyecto esta creado con **React + Typescript SWC**, **Vite**, **Tailwind CSS** y **React Router DOM**.
+Este proyecto combina un **frontend en React + Vite** con un **backend en FastAPI**, además de datos externos.  
+Sigue los pasos a continuación para configurar correctamente el entorno de desarrollo.  
 
 ---
 
-## 📦 Instalación
+## 🧩 Frontend
 
-Clona el repositorio e instala las dependencias:
+### 🚀 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/AERIS-UCCI/aeris
+cd aeris-web
+```
+
+### 📦 2. Instalar dependencias
+
+Ejecuta los siguientes comandos:
 
 ```bash
 npm install
 npm install react-router-dom
 npm install tailwindcss @tailwindcss/vite
-npm install @heroicons/react
-npm install lucide-react
-npm install leaflet.heat
+npm install @heroicons/react lucide-react
 npm install leaflet leaflet.heat react-leaflet
 npm install polyline
 npm install gh-pages --save-dev
 npm install --save-dev @types/leaflet
+npm install i18next react-i18next
+```
 
+### ▶️ 3. Ejecutar el entorno de desarrollo
+
+```bash
 npm run dev
+```
 
+Por defecto, la aplicación estará disponible en:  
+👉 [http://localhost:5173](http://localhost:5173)
 
-# Backend 
+---
 
+## ⚙️ Backend (FastAPI)
+
+### 🧱 1. Crear y activar el entorno virtual
+
+```bash
+cd aeris-web-backend
 python -m venv venv
-.\venv\Scripts\activate
-pip install fastapi uvicorn requests polyline
+.\venv\Scripts\activate   # En Windows
+# source venv/bin/activate  # En macOS / Linux
+```
 
+### 📦 2. Instalar dependencias de Python
+
+```bash
+pip install fastapi uvicorn requests polyline
+```
+
+### ▶️ 3. Iniciar el servidor backend
+
+```bash
 uvicorn main:app --reload --port 8000
+```
+
+El backend se ejecutará en:  
+👉 [http://localhost:8000](http://localhost:8000)
+
+---
+
+## 📊 Datos
+
+Si los datos no se cargan correctamente, descárgalos desde el siguiente enlace y colócalos en la carpeta `data/` del proyecto:
+
+📁 **[Descargar datos desde Google Drive](https://drive.google.com/drive/folders/1DPUtVaCK_cc9bJ7NNPVB2uPVI6OOOHub?usp=sharing)**
+
+Estructura esperada:
+```
+/data
+ ├── archivo1.json
+ ├── archivo2.json
+ └── ...
+```
+
+---
+
+## 🧠 Requisitos previos
+
+Asegúrate de tener instaladas las siguientes herramientas:
+
+| Requisito | Versión recomendada |
+|------------|---------------------|
+| Node.js | >= 18.x |
+| npm | >= 9.x |
+| Python | >= 3.10 |
+| Git | Última versión |
+
+---
+
+## 🧰 Recomendaciones
+
+- Verifica que los puertos **5173** (frontend) y **8000** (backend) estén libres.  
+- Si utilizas **VS Code**, se recomienda instalar las extensiones:
+  - 🌀 *Tailwind CSS IntelliSense*  
+  - 🐍 *Python*  
+- Usa un archivo `.env` si necesitas configurar variables de entorno personalizadas.
+
+---
+
+## 🧾 Scripts útiles
+
+| Comando | Descripción |
+|----------|--------------|
+| `npm run dev` | Inicia el servidor de desarrollo de Vite |
+| `npm run build` | Compila el proyecto para producción |
+| `npm run preview` | Visualiza la build localmente |
+| `uvicorn main:app --reload --port 8000` | Ejecuta el backend con recarga automática |
+
+---
+
+## 📚 Estructura del Proyecto
+
+```
+📦 proyecto/
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   └── package.json
+├── backend/
+│   |___ main.py
+│ ├── data/
+│   └── (archivos descargados)
+└── README.md
+```
+
+---
+
+## ✨ Autor / Créditos
+
+Proyecto desarrollado con ❤️ por [Tu Nombre o Equipo].

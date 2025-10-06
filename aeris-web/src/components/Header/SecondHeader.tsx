@@ -1,4 +1,4 @@
-import logo from './../../../public/img/Logo.png';
+import Logo from './../../assets/img/Logo.png';
 import { NavLink } from 'react-router-dom';
 import { Bell } from 'lucide-react';
 
@@ -9,7 +9,7 @@ const SecondHeader = () => {
                 {/* Logo */}
                 <div className="flex items-center gap-2">
                     <img
-                        src={logo}
+                        src={Logo}
                         alt="AERIS Logo"
                         className="w-16 h-16"
                     />

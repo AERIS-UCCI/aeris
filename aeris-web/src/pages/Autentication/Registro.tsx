@@ -1,4 +1,6 @@
 import {Link} from "react-router-dom";
+import Logo from './../../assets/img/Logo.png';
+
 
 export default function Login() {
   return (
@@ -8,7 +10,7 @@ export default function Login() {
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <img
             alt="AERIS Logo"
-            src="/img/Logo.png"
+            src={Logo}
             className="mx-auto h-22 w-auto"
           />
           

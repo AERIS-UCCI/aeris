@@ -1,5 +1,5 @@
 import BentoGrids from "../../components/Sections/BentoGrids";
-import HeroSection from "../../components/Sections//HeroSection";
+import HeroSection from "../../components/Sections/HeroSection";
 import Team from "../../components/Sections/Team";
 import Features from "../../components/Sections/FeaturesSection"
 
