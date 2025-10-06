@@ -1,7 +1,7 @@
 'use client'
 
 import { useTranslation } from "react-i18next";
-
+import { Link } from "react-router-dom";
 
 export default function HeroSection() {
   const { t } = useTranslation();
@@ -53,7 +53,7 @@ export default function HeroSection() {
                 <div className="relative w-full lg:max-w-xl lg:shrink-0 xl:max-w-2xl">
                   <h1 className="text-5xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-7xl">
                     {/* El futuro del aire que <span className="text-emerald-600">respiras,</span> hoy. */}
-                    {t("hero.title")}
+                    <Link to="/#/Rutas">{t("hero.title")}</Link>
                   </h1>
                   <p className="mt-8 text-lg font-medium text-pretty text-gray-500 sm:max-w-md sm:text-xl/8 lg:max-w-none">
                     
