@@ -11,7 +11,6 @@ export default function Perfil() {
   const [respiratoryCondition, setRespiratoryCondition] = useState('');
   const [allergy, setAllergy] = useState('');
   const [sensitivity, setSensitivity] = useState('');
-  const [temperatureUnit, setTemperatureUnit] = useState('celsius');
   const [notifications, setNotifications] = useState({
     airQuality: true,
     ecoRoutes: false
